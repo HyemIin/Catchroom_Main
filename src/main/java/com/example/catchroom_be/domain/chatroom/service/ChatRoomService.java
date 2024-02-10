@@ -62,14 +62,13 @@ public class ChatRoomService {
 
     @Transactional(readOnly = true)
     public List<ChatRoomListGetResponse> findChatRoomListByMemberId(User user) {
-
-        List<ChatRoom> ChatRoomListUserIsBuyer = chatRoomRepository.findAllByBuyerIdOrSellerId(
+        List<ChatRoom> ChatRoomList = chatRoomRepository.findAllByBuyerIdOrSellerId(
                 user.getId(),user.getId()
         );
 
         List<ChatRoom> chatRooms = new ArrayList<>();
 
-        for (ChatRoom chatRoom : ChatRoomListUserIsBuyer) {
+        for (ChatRoom chatRoom : ChatRoomList) {
             if ((chatRoom.getBuyer().getId().equals(user.getId()) && chatRoom.getBuyerState().equals(ChatRoomState.SEE)) ||
                 (chatRoom.getSeller().getId().equals(user.getId()) && chatRoom.getSellerState().equals(ChatRoomState.SEE))) {
                 chatRoom.updateUserIdentity(user.getId());

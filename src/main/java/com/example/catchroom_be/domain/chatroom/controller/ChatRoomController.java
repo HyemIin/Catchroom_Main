@@ -22,7 +22,6 @@ public class ChatRoomController {
 
 
     /** 채팅방 내부 정보 반환하는 API */
-    //TODO 안쓰면 삭제??
     @GetMapping("/info")
     public ChatRoomListGetResponse getChatRoomInfoChat(
             @AuthenticationPrincipal User user,
