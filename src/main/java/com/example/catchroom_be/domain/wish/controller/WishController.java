@@ -23,5 +23,6 @@ public class WishController {
             @AuthenticationPrincipal User user
     ) {
         return wishService.setWishList(productId, user);
+
     }
 }
